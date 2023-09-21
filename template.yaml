@@ -30,11 +30,11 @@ Resources:
             Method: get
       Environment:
         Variables:
-          GH_API_KEY_1:
-          GH_USERNAME_1:
-          GH_API_KEY_2:
-          GH_USERNAME_2:
-          DEBUG:
+          GH_API_KEY_1: ""
+          GH_USERNAME_1: ""
+          GH_API_KEY_2: ""
+          GH_USERNAME_2: ""
+          DEBUG: true
       MemorySize: 256
     Metadata: # Manage esbuild properties
       BuildMethod: esbuild
