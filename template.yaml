@@ -35,7 +35,7 @@ Resources:
           GH_API_KEY_2:
           GH_USERNAME_2:
           DEBUG:
-      MemorySize: 512
+      MemorySize: 256
     Metadata: # Manage esbuild properties
       BuildMethod: esbuild
       BuildProperties:
@@ -64,10 +64,10 @@ Outputs:
   # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
   MetricsApi:
     Description: API Gateway endpoint URL for Prod stage for metrics function
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/metrics/"
   MetricsFunction:
-    Description: Hello World Lambda Function ARN
-    Value: !GetAtt HelloWorldFunction.Arn
+    Description: Metrics Lambda Function ARN
+    Value: !GetAtt MetricsFunction.Arn
   MetricsFunctionIamRole:
-    Description: Implicit IAM Role created for Hello World function
-    Value: !GetAtt HelloWorldFunctionRole.Arn
+    Description: Implicit IAM Role created for Metrics function
+    Value: !GetAtt MetricsFunctionRole.Arn

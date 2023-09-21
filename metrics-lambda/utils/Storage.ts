@@ -30,8 +30,6 @@ class Storage {
                     .promise()
             )?.Item;
 
-            Logger.appendDebugLog(`Fetched values: ${JSON.stringify(this.values)}`);
-
             if (!this.values || Object.keys(this.values).length === 0) {
                 this.values = { store_id: 0 };
                 Logger.appendDebugLog(
