@@ -35,7 +35,7 @@ Resources:
           GH_API_KEY_2: ""
           GH_USERNAME_2: ""
           DEBUG: true
-      MemorySize: 256
+      MemorySize: 512
     Metadata: # Manage esbuild properties
       BuildMethod: esbuild
       BuildProperties:

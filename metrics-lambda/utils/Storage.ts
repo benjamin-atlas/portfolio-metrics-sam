@@ -10,11 +10,6 @@ class Storage {
     public static async load(): Promise<boolean> {
         try {
             Logger.appendDebugLog('Initializing dynamoDB client.');
-            AWS.config.update({
-                accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-                secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-                region: process.env.AWS_DEFAULT_REGION,
-            });
 
             this.dynamoDB = new AWS.DynamoDB.DocumentClient();
 

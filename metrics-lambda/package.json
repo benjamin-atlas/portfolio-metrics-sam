@@ -10,7 +10,8 @@
         "lint": "eslint '*.ts' --quiet --fix",
         "compile": "tsc",
         "test": "npm run compile && npm run unit",
-        "dev": "cd ../; sam build; sam local invoke --env-vars ./metrics-lambda/environment.json"
+        "dev": "cd ../; sam build; sam local invoke --env-vars ./metrics-lambda/environment.json",
+        "deploy": "cd ../; sam build; sam deploy"
     },
     "dependencies": {
         "aws-sdk": "^2.1461.0",
