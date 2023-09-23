@@ -67,8 +67,11 @@ class Storage {
             }
         }
 
+        this.values[key] = value;
+    }
+
+    public static async synchronize() {
         try {
-            this.values[key] = value;
             Logger.appendDebugLog('Storing values to gh-metrics-store.');
             await this.dynamoDB
                 .put({
@@ -77,7 +80,7 @@ class Storage {
                 })
                 .promise();
         } catch (error: any) {
-            Logger.appendError(`Error storing key/value [${key}]: [${value}]. Error: ${error}`);
+            Logger.appendError(`Error storing current value set to gh-metrics-store. Error: ${error}`);
         }
     }
 }

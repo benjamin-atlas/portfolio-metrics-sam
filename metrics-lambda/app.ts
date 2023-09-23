@@ -25,6 +25,12 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
 
         Storage.store('metrics', aggregateMetrics);
 
+        try {
+            await Storage.synchronize();
+        } catch (error) {
+            Logger.appendError(`Unable to store fetched values to gh-metrics-store. Error: ${error}`);
+        }
+
         return {
             statusCode: 200,
             body: JSON.stringify({

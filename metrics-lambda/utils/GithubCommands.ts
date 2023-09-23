@@ -12,7 +12,7 @@ const getGHUserMetrics = async (username: string, token: string): Promise<Github
 
     try {
         Logger.appendDebugLog(`Fetching user [${username}] repos.`);
-        const userRepositoriesResponse = await axios.get(`https://api.github.com/user/repos`, {
+        const userRepositoriesResponse = await axios.get(`https://api.github.com/user/repos?per_page=100`, {
             headers,
         });
 
@@ -77,7 +77,6 @@ async function getCommitsForUser(username: string, repositories: any[], headers:
         totalCommits += commitCount;
 
         try {
-            Logger.appendDebugLog(`Storing last commit page info for user [${username}], repo [${repo.name}].`);
             Storage.store(`${username}_${repo.name}_last_commit_page`, pageNumber);
         } catch (error) {
             Logger.appendError(
@@ -148,7 +147,6 @@ async function getPRsMergedForUser(username: string, repositories: any[], header
         totalPrs += prsPerRepo;
 
         try {
-            Logger.appendDebugLog(`Storing last pr page info for user [${username}], repo [${repo.name}].`);
             Storage.store(`${username}_${repo.name}_last_pr_page`, pageNumber);
             Storage.store(`${username}_${repo.name}_last_pr_count`, prsPerRepo);
             Storage.store(`${username}_${repo.name}_last_pr_page_count`, numberOfRelevantPRsOnPage);
